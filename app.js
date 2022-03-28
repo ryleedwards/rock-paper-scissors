@@ -1,3 +1,5 @@
+game();
+
 function playRound(playerSelection, computerSelection) {
   let outcomeMsg = ``;
   let outcome = ``;
@@ -72,6 +74,8 @@ function playerPlay() {
   ) {
     return playerSelection;
   } else {
+    /* TODO need to fix logic here to escape playerPlay function and throw error. 
+      Possibly preserve game state / score. . . */
     console.log(`Invalid selection. Please enter "Rock" "Paper" or "Scissors"`);
   }
 }
@@ -111,5 +115,3 @@ function game() {
     console.log("Draw! Please try again.");
   }
 }
-
-game();
