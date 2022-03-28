@@ -5,28 +5,37 @@ function playRound(playerSelection, computerSelection) {
     case "Rock":
       if (computerSelection == "Rock") {
         outcomeMsg = `Draw! ${playerSelection} ties with ${computerSelection}`;
+        outcome = 0;
       } else if (computerSelection == "Paper") {
         outcomeMsg = `You lose! ${playerSelection} loses to ${computerSelection}`;
+        outcome = -1;
       } else {
         outcomeMsg = `You win! ${playerSelection} beats ${computerSelection}`;
+        outcome = 1;
       }
       break;
     case "Paper":
       if (computerSelection == "Paper") {
         outcomeMsg = `Draw! ${playerSelection} ties with ${computerSelection}`;
+        outcome = 0;
       } else if (computerSelection == "Scissors") {
         outcomeMsg = `You lose! ${playerSelection} loses to ${computerSelection}`;
+        outcome = -1;
       } else {
         outcomeMsg = `You win! ${playerSelection} beats ${computerSelection}`;
+        outcome = 1;
       }
       break;
     case "Scissors":
       if (computerSelection == "Scissors") {
         outcomeMsg = `Draw! ${playerSelection} ties with ${computerSelection}`;
+        outcome = 0;
       } else if (computerSelection == "Rock") {
         outcomeMsg = `You lose! ${playerSelection} loses to ${computerSelection}`;
+        outcome = -1;
       } else {
         outcomeMsg = `You win! ${playerSelection} beats ${computerSelection}`;
+        outcome = 1;
       }
       break;
   }
@@ -72,3 +81,35 @@ function capitalize(word) {
   newWord = newWord.charAt(0).toUpperCase() + newWord.slice(1, newWord.length);
   return newWord;
 }
+
+function game() {
+  let playerScore = 0,
+    computerScore = 0,
+    roundDisplay = 0;
+
+  for (let i = 0; i < 5; i++) {
+    round = playRound(playerPlay(), computerPlay());
+    console.log(round[1]);
+    /* player win round */
+    if (round[0] > 0) {
+      playerScore++;
+    } else if (round[0] < 0) {
+      /* computer win round */
+      computerScore++;
+    }
+    roundDisplay = i + 1;
+    console.log(
+      `Round ${roundDisplay} : Player Score: ${playerScore}    ||    Computer Score: ${computerScore}`
+    );
+  }
+
+  if (playerScore > computerScore) {
+    console.log("You win! Congratulations!");
+  } else if (playerScore < computerScore) {
+    console.log("You lose! Better luck next time!");
+  } else {
+    console.log("Draw! Please try again.");
+  }
+}
+
+game();
