@@ -31,9 +31,10 @@
   border-radius: 8px;
 }
 
-.btn:hover {
+.btn.player:hover {
   background-color: black;
   color: white;
+  cursor: pointer;
   box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
@@ -45,6 +46,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .cpuArea {
@@ -55,6 +57,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .playerArea {
@@ -74,5 +77,9 @@
 }
 
 .resultBanner {
+  color: white;
+}
+
+.result {
   color: white;
 }

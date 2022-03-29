@@ -1,10 +1,10 @@
-const btns = document.querySelectorAll(".btn");
+const btns = document.querySelectorAll(".btn.player");
+const result = document.querySelector(".result");
 
 btns.forEach((button) => {
   button.addEventListener("click", () => {
     let playerSelection = button.classList[1];
-    outcome = playRound(playerSelection, computerPlay());
-    console.log(outcome[1]);
+    playRound(playerSelection, computerPlay());
   });
 });
 
@@ -49,7 +49,8 @@ function playRound(playerSelection, computerSelection) {
       }
       break;
   }
-  return [outcome, outcomeMsg];
+
+  result.textContent = outcomeMsg;
 }
 
 function computerPlay() {
