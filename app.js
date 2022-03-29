@@ -3,21 +3,20 @@ const btns = document.querySelectorAll(".btn");
 btns.forEach((button) => {
   button.addEventListener("click", () => {
     let playerSelection = button.classList[1];
-    playerPlay(playerSelection);
+    outcome = playRound(playerSelection, computerPlay());
+    console.log(outcome[1]);
   });
 });
-
-game();
 
 function playRound(playerSelection, computerSelection) {
   let outcomeMsg = ``;
   let outcome = ``;
   switch (playerSelection) {
-    case "Rock":
-      if (computerSelection == "Rock") {
+    case "rock":
+      if (computerSelection == "rock") {
         outcomeMsg = `Draw! ${playerSelection} ties with ${computerSelection}`;
         outcome = 0;
-      } else if (computerSelection == "Paper") {
+      } else if (computerSelection == "paper") {
         outcomeMsg = `You lose! ${playerSelection} loses to ${computerSelection}`;
         outcome = -1;
       } else {
@@ -25,11 +24,11 @@ function playRound(playerSelection, computerSelection) {
         outcome = 1;
       }
       break;
-    case "Paper":
-      if (computerSelection == "Paper") {
+    case "paper":
+      if (computerSelection == "paper") {
         outcomeMsg = `Draw! ${playerSelection} ties with ${computerSelection}`;
         outcome = 0;
-      } else if (computerSelection == "Scissors") {
+      } else if (computerSelection == "scissors") {
         outcomeMsg = `You lose! ${playerSelection} loses to ${computerSelection}`;
         outcome = -1;
       } else {
@@ -37,11 +36,11 @@ function playRound(playerSelection, computerSelection) {
         outcome = 1;
       }
       break;
-    case "Scissors":
-      if (computerSelection == "Scissors") {
+    case "scissors":
+      if (computerSelection == "scissors") {
         outcomeMsg = `Draw! ${playerSelection} ties with ${computerSelection}`;
         outcome = 0;
-      } else if (computerSelection == "Rock") {
+      } else if (computerSelection == "rock") {
         outcomeMsg = `You lose! ${playerSelection} loses to ${computerSelection}`;
         outcome = -1;
       } else {
@@ -58,13 +57,13 @@ function computerPlay() {
   const random = Math.floor(Math.random() * 3);
   switch (random) {
     case 0:
-      selection = "Rock";
+      selection = "rock";
       break;
     case 1:
-      selection = "Paper";
+      selection = "paper";
       break;
     case 2:
-      selection = "Scissors";
+      selection = "scissors";
       break;
   }
   return selection;
