@@ -1,3 +1,10 @@
+const btns = document.querySelectorAll(".btn");
+btns.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    selectedBtn = e.target;
+  });
+});
+
 game();
 
 function playRound(playerSelection, computerSelection) {
