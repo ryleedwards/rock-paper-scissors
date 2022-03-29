@@ -1,7 +1,9 @@
 const btns = document.querySelectorAll(".btn");
+
 btns.forEach((button) => {
-  button.addEventListener("click", (e) => {
-    selectedBtn = e.target;
+  button.addEventListener("click", () => {
+    let playerSelection = button.classList[1];
+    playerPlay(playerSelection);
   });
 });
 
@@ -68,16 +70,11 @@ function computerPlay() {
   return selection;
 }
 
-function playerPlay() {
-  // let playerSelection = prompt(
-  //   "Please select Rock, Paper, or Scissors",
-  //   ""
-  // ).trim();
-  playerSelection = capitalize(playerSelection);
+function playerPlay(playerSelection) {
   if (
-    playerSelection == "Rock" ||
-    playerSelection == "Paper" ||
-    playerSelection == "Scissors"
+    playerSelection == "rock" ||
+    playerSelection == "paper" ||
+    playerSelection == "scissors"
   ) {
     return playerSelection;
   } else {
