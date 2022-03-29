@@ -70,19 +70,21 @@ function computerPlay() {
   return selection;
 }
 
-function playerPlay(playerSelection) {
-  if (
-    playerSelection == "rock" ||
-    playerSelection == "paper" ||
-    playerSelection == "scissors"
-  ) {
-    return playerSelection;
-  } else {
-    /* TODO need to fix logic here to escape playerPlay function and throw error. 
-      Possibly preserve game state / score. . . */
-    console.log(`Invalid selection. Please enter "Rock" "Paper" or "Scissors"`);
-  }
-}
+// playerPlay no longer needed - handled by button press event listener
+
+// function playerPlay(playerSelection) {
+//   if (
+//     playerSelection == "rock" ||
+//     playerSelection == "paper" ||
+//     playerSelection == "scissors"
+//   ) {
+//     return playerSelection;
+//   } else {
+//     /* TODO need to fix logic here to escape playerPlay function and throw error.
+//       Possibly preserve game state / score. . . */
+//     console.log(`Invalid selection. Please enter "Rock" "Paper" or "Scissors"`);
+//   }
+// }
 
 function capitalize(word) {
   newWord = word.toLowerCase();
