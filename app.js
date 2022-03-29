@@ -91,7 +91,9 @@ function game() {
     computerScore = 0,
     roundDisplay = 0;
 
-  for (let i = 0; i < 5; i++) {
+  // changing to 1 round
+
+  for (let i = 0; i < 1; i++) {
     round = playRound(playerPlay(), computerPlay());
     console.log(round[1]);
     /* player win round */
