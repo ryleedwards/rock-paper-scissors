@@ -14,6 +14,26 @@
 .container.playArea {
   height: 600px;
   width: 1200px;
-  background-color: black;
+  background-color: darkgray;
   margin-top: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.btn {
+  width: 128px;
+  height: 64px;
+  font-weight: bold;
+  font-size: 24px;
+  transition-duration: 0.1s;
+  border-radius: 8px;
+}
+
+.btn:hover {
+  background-color: black;
+  color: white;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
