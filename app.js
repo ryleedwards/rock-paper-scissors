@@ -62,10 +62,10 @@ function computerPlay() {
 }
 
 function playerPlay() {
-  let playerSelection = prompt(
-    "Please select Rock, Paper, or Scissors",
-    ""
-  ).trim();
+  // let playerSelection = prompt(
+  //   "Please select Rock, Paper, or Scissors",
+  //   ""
+  // ).trim();
   playerSelection = capitalize(playerSelection);
   if (
     playerSelection == "Rock" ||

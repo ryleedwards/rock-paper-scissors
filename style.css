@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+}
+
+.container.playArea {
+  height: 600px;
+  width: 1200px;
+  background-color: black;
+  margin-top: 5rem;
+}
