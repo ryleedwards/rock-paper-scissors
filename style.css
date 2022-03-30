@@ -32,11 +32,10 @@
 }
 
 .btn.player:hover {
-  background-color: black;
-  color: white;
   cursor: pointer;
   box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  border: solid black 5px;
 }
 
 .resultArea {
@@ -82,4 +81,26 @@
 
 .result {
   color: white;
+}
+
+.topBanner {
+  background-color: black;
+  color: white;
+  width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#round {
+  font-size: 24px;
+}
+
+#playerScore {
+  font-size: 24px;
+  margin-left: 100px;
+}
+#cpuScore {
+  font-size: 24px;
+  margin-right: 100px;
 }

@@ -1,7 +1,12 @@
-const btns = document.querySelectorAll(".btn.player");
+const btnsPlayer = document.querySelectorAll(".btn.player");
+const btnsCpu = document.querySelectorAll(".btn.cpu");
 const result = document.querySelector(".result");
 
-btns.forEach((button) => {
+let playerScore = 0,
+  computerScore = 0,
+  roundDisplay = 0;
+
+btnsPlayer.forEach((button) => {
   button.addEventListener("click", () => {
     let playerSelection = button.classList[1];
     playRound(playerSelection, computerPlay());
@@ -19,8 +24,12 @@ function playRound(playerSelection, computerSelection) {
       } else if (computerSelection == "paper") {
         outcomeMsg = `You lose! ${playerSelection} loses to ${computerSelection}`;
         outcome = -1;
+        btnsPlayer[0].style.backgroundColor = "red";
+        btnsPlayer[0].style.color = "white";
       } else {
         outcomeMsg = `You win! ${playerSelection} beats ${computerSelection}`;
+        btnsPlayer[0].style.backgroundColor = "green";
+        btnsPlayer[0].style.color = "white";
         outcome = 1;
       }
       break;
@@ -30,9 +39,13 @@ function playRound(playerSelection, computerSelection) {
         outcome = 0;
       } else if (computerSelection == "scissors") {
         outcomeMsg = `You lose! ${playerSelection} loses to ${computerSelection}`;
+        btnsPlayer[1].style.backgroundColor = "red";
+        btnsPlayer[1].style.color = "white";
         outcome = -1;
       } else {
         outcomeMsg = `You win! ${playerSelection} beats ${computerSelection}`;
+        btnsPlayer[1].style.backgroundColor = "green";
+        btnsPlayer[1].style.color = "white";
         outcome = 1;
       }
       break;
@@ -42,84 +55,47 @@ function playRound(playerSelection, computerSelection) {
         outcome = 0;
       } else if (computerSelection == "rock") {
         outcomeMsg = `You lose! ${playerSelection} loses to ${computerSelection}`;
+        btnsPlayer[2].style.backgroundColor = "red";
+        btnsPlayer[2].style.color = "white";
         outcome = -1;
       } else {
         outcomeMsg = `You win! ${playerSelection} beats ${computerSelection}`;
         outcome = 1;
+        btnsPlayer[2].style.backgroundColor = "green";
+        btnsPlayer[2].style.color = "white";
       }
       break;
   }
-
   result.textContent = outcomeMsg;
 }
 
+function deselectBtns() {
+  btnsCpu.forEach((button) => {
+    button.style.backgroundColor = "white";
+  });
+  btnsPlayer.forEach((button) => {
+    button.style.backgroundColor = "white";
+    button.style.color = "black";
+  });
+}
+
 function computerPlay() {
+  deselectBtns();
   let selection = ``;
   const random = Math.floor(Math.random() * 3);
   switch (random) {
     case 0:
       selection = "rock";
+      btnsCpu[0].style.backgroundColor = "Yellow";
       break;
     case 1:
       selection = "paper";
+      btnsCpu[1].style.backgroundColor = "Yellow";
       break;
     case 2:
       selection = "scissors";
+      btnsCpu[2].style.backgroundColor = "Yellow";
       break;
   }
   return selection;
-}
-
-// playerPlay no longer needed - handled by button press event listener
-
-// function playerPlay(playerSelection) {
-//   if (
-//     playerSelection == "rock" ||
-//     playerSelection == "paper" ||
-//     playerSelection == "scissors"
-//   ) {
-//     return playerSelection;
-//   } else {
-//     /* TODO need to fix logic here to escape playerPlay function and throw error.
-//       Possibly preserve game state / score. . . */
-//     console.log(`Invalid selection. Please enter "Rock" "Paper" or "Scissors"`);
-//   }
-// }
-
-function capitalize(word) {
-  newWord = word.toLowerCase();
-  newWord = newWord.charAt(0).toUpperCase() + newWord.slice(1, newWord.length);
-  return newWord;
-}
-
-function game() {
-  let playerScore = 0,
-    computerScore = 0,
-    roundDisplay = 0;
-
-  // changing to 1 round
-
-  for (let i = 0; i < 1; i++) {
-    round = playRound(playerPlay(), computerPlay());
-    console.log(round[1]);
-    /* player win round */
-    if (round[0] > 0) {
-      playerScore++;
-    } else if (round[0] < 0) {
-      /* computer win round */
-      computerScore++;
-    }
-    roundDisplay = i + 1;
-    console.log(
-      `Round ${roundDisplay} : Player Score: ${playerScore}    ||    Computer Score: ${computerScore}`
-    );
-  }
-
-  if (playerScore > computerScore) {
-    console.log("You win! Congratulations!");
-  } else if (playerScore < computerScore) {
-    console.log("You lose! Better luck next time!");
-  } else {
-    console.log("Draw! Please try again.");
-  }
 }
