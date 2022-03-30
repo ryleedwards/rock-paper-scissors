@@ -1,9 +1,11 @@
 const btnsPlayer = document.querySelectorAll(".btn.player");
 const btnsCpu = document.querySelectorAll(".btn.cpu");
+const btnReplay = document.querySelector(".btn.replay");
 const result = document.querySelector(".result");
 const pScoreDisplay = document.getElementById("playerScore");
 const roundDisplay = document.getElementById("round");
 const cpuScoreDisplay = document.getElementById("cpuScore");
+const outcomeDisplay = document.querySelector(".outcome");
 
 let playerScore = 0,
   computerScore = 0,
@@ -17,6 +19,21 @@ btnsPlayer.forEach((button) => {
     playRound(playerSelection, computerPlay());
   });
 });
+
+btnReplay.addEventListener("click", () => {
+  console.log("Replay Button Hit");
+  replay();
+});
+
+function replay() {
+  console.log("replay() hit");
+  outcomeDisplay.style.visibility = "hidden";
+  btnReplay.style.visibility = "hidden";
+  playerScore = 0;
+  computerScore = 0;
+  round = 0;
+  refreshScore();
+}
 
 function playRound(playerSelection, computerSelection) {
   let outcomeMsg = ``;
@@ -117,24 +134,27 @@ function incrementScore(outcome) {
       playerScore++;
       break;
   }
-}
 
-function checkRound() {
   if (round < 5) {
     round++;
   } else {
     declareOutcome();
   }
+  refreshScore();
 }
 
 function declareOutcome() {
+  let declaredOutcome = "";
   if (playerScore > computerScore) {
-    //win
+    declaredOutcome = "You Win!";
   } else if (playerScore < computerScore) {
-    //lose
+    declaredOutcome = "You Lose!";
   } else {
-    //tie
+    declaredOutcome = "Draw!";
   }
+  outcomeDisplay.style.visibility = "visible";
+  btnReplay.style.visibility = "visible";
+  outcomeDisplay.textContent = declaredOutcome;
 }
 
 function refreshScore() {
