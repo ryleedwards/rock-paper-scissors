@@ -1,10 +1,15 @@
 const btnsPlayer = document.querySelectorAll(".btn.player");
 const btnsCpu = document.querySelectorAll(".btn.cpu");
 const result = document.querySelector(".result");
+const pScoreDisplay = document.getElementById("playerScore");
+const roundDisplay = document.getElementById("round");
+const cpuScoreDisplay = document.getElementById("cpuScore");
 
 let playerScore = 0,
   computerScore = 0,
-  roundDisplay = 0;
+  round = 0;
+
+refreshScore();
 
 btnsPlayer.forEach((button) => {
   button.addEventListener("click", () => {
@@ -67,6 +72,7 @@ function playRound(playerSelection, computerSelection) {
       break;
   }
   result.textContent = outcomeMsg;
+  incrementScore(outcome);
 }
 
 function deselectBtns() {
@@ -98,4 +104,41 @@ function computerPlay() {
       break;
   }
   return selection;
+}
+
+function incrementScore(outcome) {
+  switch (outcome) {
+    case -1: //lose
+      computerScore++;
+      break;
+    case 0: //draw
+      break;
+    case 1: //win
+      playerScore++;
+      break;
+  }
+}
+
+function checkRound() {
+  if (round < 5) {
+    round++;
+  } else {
+    declareOutcome();
+  }
+}
+
+function declareOutcome() {
+  if (playerScore > computerScore) {
+    //win
+  } else if (playerScore < computerScore) {
+    //lose
+  } else {
+    //tie
+  }
+}
+
+function refreshScore() {
+  pScoreDisplay.textContent = playerScore;
+  roundDisplay.textContent = round;
+  cpuScoreDisplay.textContent = computerScore;
 }
